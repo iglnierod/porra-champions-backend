@@ -1,4 +1,5 @@
 com/iglnierod/porra_champions/repository/TeamRepository.class
+com/iglnierod/porra_champions/dto/PredictionDTO.class
 com/iglnierod/porra_champions/repository/PredictionRepository.class
 com/iglnierod/porra_champions/dto/MatchDTO.class
 com/iglnierod/porra_champions/PorraChampionsApplication$1.class
@@ -8,7 +9,9 @@ com/iglnierod/porra_champions/repository/MatchRepository.class
 com/iglnierod/porra_champions/PorraChampionsApplication.class
 com/iglnierod/porra_champions/model/Match.class
 com/iglnierod/porra_champions/controller/MatchController.class
+com/iglnierod/porra_champions/model/GroupedPrediction.class
 com/iglnierod/porra_champions/controller/UserController.class
 com/iglnierod/porra_champions/model/Team.class
 com/iglnierod/porra_champions/controller/TeamController.class
 com/iglnierod/porra_champions/repository/UserRepository.class
+com/iglnierod/porra_champions/controller/PredictionController.class
