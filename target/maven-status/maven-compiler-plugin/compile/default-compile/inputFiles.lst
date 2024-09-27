@@ -1,0 +1,13 @@
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/PorraChampionsApplication.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/controller/MatchController.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/controller/TeamController.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/controller/UserController.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/dto/MatchDTO.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/Match.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/Prediction.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/Team.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/User.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/repository/MatchRepository.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/repository/PredictionRepository.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/repository/TeamRepository.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/repository/UserRepository.java
