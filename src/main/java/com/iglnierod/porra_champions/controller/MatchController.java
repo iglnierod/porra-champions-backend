@@ -6,6 +6,7 @@ import com.iglnierod.porra_champions.model.Team;
 import com.iglnierod.porra_champions.repository.MatchRepository;
 import com.iglnierod.porra_champions.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class MatchController {
 
     @GetMapping
     public List<Match> getAllMatches() {
+//        return matchRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         return matchRepository.findAll();
     }
 
