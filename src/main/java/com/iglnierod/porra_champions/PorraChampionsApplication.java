@@ -19,7 +19,8 @@ public class PorraChampionsApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedOrigins("http://localhost:4200", "https://porra-champions.vercel.app", "http://localhost:5173")
+						.allowedOrigins(/*"http://localhost:4200", "https://porra-champions.vercel.app"*/
+								"http://localhost:5173", "https://ucl-porra.vercel.app/")
 						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 						.allowedHeaders("*")
 						.allowCredentials(true);
