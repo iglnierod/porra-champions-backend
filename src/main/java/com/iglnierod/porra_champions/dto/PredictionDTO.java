@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PredictionDTO {
-    private Long matchId;
-    private Long userId;
     private int localGoals;
     private int awayGoals;
+    private Long matchId;
+    private Long userId;
 }

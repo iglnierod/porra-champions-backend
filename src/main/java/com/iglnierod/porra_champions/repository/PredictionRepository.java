@@ -1,8 +1,17 @@
 package com.iglnierod.porra_champions.repository;
 
 import com.iglnierod.porra_champions.model.Prediction;
-import com.iglnierod.porra_champions.model.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
 public interface PredictionRepository extends JpaRepository<Prediction, Long> {
+
+    // Acceder a matchDay a través de la relación con Match
+    List<Prediction> findByMatch_MatchDay(int matchDay);
+
+    // Buscar predicciones por el ID del partido
+    List<Prediction> findByMatch_Id(Long matchId);
+
+    // Encontrar predicciones por el ID del partido y el usuario
+    List<Prediction> findByMatch_IdAndUser_Id(Long matchId, Long userId);
 }

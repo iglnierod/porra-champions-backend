@@ -1,5 +1,6 @@
 package com.iglnierod.porra_champions.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +26,5 @@ public class Match {
 
   private int localGoals;
   private int awayGoals;
+  private int matchDay;
 }
