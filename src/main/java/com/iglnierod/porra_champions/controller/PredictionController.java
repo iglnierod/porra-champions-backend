@@ -29,11 +29,6 @@ public class PredictionController {
     @Autowired
     private UserRepository userRepository;
 
-//    @GetMapping
-//    public List<Prediction> getPredictions() {
-//        return predictionRepository.findAll();
-//    }
-
     @GetMapping
     public List<GroupedPrediction> getPredictions() {
         List<Prediction> predictions = predictionRepository.findAll();
@@ -59,22 +54,6 @@ public class PredictionController {
         return predictionRepository.findByMatch_MatchDay(matchDay);
     }
 
-
-
-
-//    @PostMapping
-//    public ResponseEntity<Prediction> createMatch(@RequestBody PredictionDTO predictionDTO) {
-//        Prediction prediction = new Prediction();
-//        prediction.setMatch(matchRepository.getReferenceById(predictionDTO.getMatchId()));
-//        prediction.setGoalsLocalPrediction(predictionDTO.getLocalGoals());
-//        prediction.setGoalsAwayPrediction(predictionDTO.getAwayGoals());
-//        prediction.setUser(userRepository.getReferenceById(predictionDTO.getUserId()));
-//
-//        Prediction savedPrediction = predictionRepository.save(prediction);
-//
-//        return ResponseEntity.ok(savedPrediction);
-//    }
-
     @PostMapping("/predict")
     public ResponseEntity<String> createPredictions(@RequestBody List<PredictionDTO> predictions) {
         for(PredictionDTO pred : predictions) {
@@ -91,24 +70,46 @@ public class PredictionController {
 
     @PutMapping("/edit")
     public ResponseEntity<Prediction> editPrediction(@RequestBody PredictionDTO predictionDTO) {
-        // Buscar la predicción existente por el ID del partido y del usuario
-        List<Prediction> existingPredictions = predictionRepository.findByMatch_IdAndUser_Id(
-                predictionDTO.getMatchId(), predictionDTO.getUserId());
+        // Buscar la predicción existente por el ID
+        Prediction existingPrediction = predictionRepository.findById(predictionDTO.getId()).orElse(null);
 
-        if (existingPredictions.isEmpty()) {
+        if (existingPrediction == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        // Tomar la primera predicción (asumiendo que solo hay una)
-        Prediction prediction = existingPredictions.get(0);
         // Actualizar los goles
-        prediction.setGoalsLocalPrediction(predictionDTO.getLocalGoals());
-        prediction.setGoalsAwayPrediction(predictionDTO.getAwayGoals());
+        existingPrediction.setGoalsLocalPrediction(predictionDTO.getLocalGoals());
+        existingPrediction.setGoalsAwayPrediction(predictionDTO.getAwayGoals());
 
         // Guardar los cambios en la base de datos
-        Prediction updatedPrediction = predictionRepository.save(prediction);
+        Prediction updatedPrediction = predictionRepository.save(existingPrediction);
 
         // Devolver el objeto de predicción actualizado
         return ResponseEntity.ok(updatedPrediction);
+    }
+
+    // Añadir una nueva predicción
+    @PostMapping("/add")
+    public ResponseEntity<Prediction> addPrediction(@RequestBody PredictionDTO predictionDTO) {
+        // Comprobar si ya existe una predicción para este partido y usuario
+        List<Prediction> existingPredictions = predictionRepository.findByMatch_IdAndUser_Id(
+                predictionDTO.getMatchId(), predictionDTO.getUserId());
+
+        if (!existingPredictions.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build(); // 409 Conflict
+        }
+
+        // Crear una nueva predicción
+        Prediction prediction = new Prediction();
+        prediction.setMatch(matchRepository.getReferenceById(predictionDTO.getMatchId()));
+        prediction.setGoalsLocalPrediction(predictionDTO.getLocalGoals());
+        prediction.setGoalsAwayPrediction(predictionDTO.getAwayGoals());
+        prediction.setUser(userRepository.getReferenceById(predictionDTO.getUserId()));
+
+        // Guardar la nueva predicción en la base de datos
+        Prediction savedPrediction = predictionRepository.save(prediction);
+
+        // Devolver la nueva predicción
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedPrediction); // 201 Created
     }
 }
