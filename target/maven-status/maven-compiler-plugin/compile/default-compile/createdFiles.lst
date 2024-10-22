@@ -1,6 +1,7 @@
 com/iglnierod/porra_champions/repository/TeamRepository.class
 com/iglnierod/porra_champions/dto/PredictionDTO.class
 com/iglnierod/porra_champions/repository/PredictionRepository.class
+com/iglnierod/porra_champions/dto/MatchWithPredictionsDTO.class
 com/iglnierod/porra_champions/dto/MatchDTO.class
 com/iglnierod/porra_champions/PorraChampionsApplication$1.class
 com/iglnierod/porra_champions/model/User.class
