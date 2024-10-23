@@ -19,13 +19,13 @@ public class PorraChampionsApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedOrigins(/*"http://localhost:4200", "https://porra-champions.vercel.app"*/
-								"http://localhost:5173", "https://ucl-porra.vercel.app")
-						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+						// Permitir todas las IPs
+						.allowedOrigins("*")
+						// Permitir solo los métodos GET, POST y PUT
+						.allowedMethods("GET", "POST", "PUT")
 						.allowedHeaders("*")
-						.allowCredentials(true);
+						.allowCredentials(false); // No se necesita permitir credenciales ya que se permiten todas las IPs
 			}
 		};
 	}
-
 }
