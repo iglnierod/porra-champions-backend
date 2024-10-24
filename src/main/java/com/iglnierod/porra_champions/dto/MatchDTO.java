@@ -1,6 +1,5 @@
 package com.iglnierod.porra_champions.dto;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,4 +12,5 @@ public class MatchDTO {
     private Long awayTeamId;
     private int localGoals;
     private int awayGoals;
+    private Long matchdayId;
 }
