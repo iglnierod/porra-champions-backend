@@ -1,10 +1,9 @@
 package com.iglnierod.porra_champions.controller;
 
 import com.iglnierod.porra_champions.dto.MatchdayDTO;
-import com.iglnierod.porra_champions.model.Match;
-import com.iglnierod.porra_champions.model.Matchday;
-import com.iglnierod.porra_champions.model.Prediction;
-import com.iglnierod.porra_champions.model.User;
+import com.iglnierod.porra_champions.model.*;
+import com.iglnierod.porra_champions.model.enums.Point;
+import com.iglnierod.porra_champions.model.enums.PredictionStatus;
 import com.iglnierod.porra_champions.repository.MatchRepository;
 import com.iglnierod.porra_champions.repository.MatchdayRepository;
 import com.iglnierod.porra_champions.repository.PredictionRepository;
@@ -61,15 +60,19 @@ public class MatchdayController {
 
     private User getUser(Match match, Prediction prediction, int matchResult) {
         int predictionResult = checkMatchWinner(prediction.getGoalsLocalPrediction(), prediction.getGoalsAwayPrediction());
-        int points = 0;
+        Point points = Point.WRONG;
+        PredictionStatus predictionStatus = PredictionStatus.WRONG;
         if (match.getLocalGoals() == prediction.getGoalsLocalPrediction() && match.getAwayGoals() == prediction.getGoalsAwayPrediction()) {
-            points = 3;
+            points = Point.PERFECT;
+            predictionStatus = PredictionStatus.PERFECT;
         } else if (matchResult == predictionResult) {
-            points = 1;
+            points = Point.RIGHT;
+            predictionStatus = PredictionStatus.RIGHT;
         }
+        prediction.setStatus(predictionStatus);
 
         User user = prediction.getUser();
-        user.setPoints(user.getPoints() + points);
+        user.setPoints(user.getPoints() + points.getValue());
         return user;
     }
 

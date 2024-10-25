@@ -13,4 +13,5 @@ public class PredictionDTO {
     private int awayGoals;
     private Long matchId;
     private Long userId;
+    private int status;
 }

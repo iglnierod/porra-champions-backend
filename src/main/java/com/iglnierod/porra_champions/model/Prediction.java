@@ -1,5 +1,6 @@
 package com.iglnierod.porra_champions.model;
 
+import com.iglnierod.porra_champions.model.enums.PredictionStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +26,6 @@ public class Prediction {
 
   private int goalsLocalPrediction;
   private int goalsAwayPrediction;
+
+  private PredictionStatus status = PredictionStatus.WAITING;
 }

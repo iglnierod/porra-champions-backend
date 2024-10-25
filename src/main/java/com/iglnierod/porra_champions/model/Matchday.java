@@ -1,5 +1,6 @@
 package com.iglnierod.porra_champions.model;
 
+import com.iglnierod.porra_champions.model.enums.MatchdayStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,5 +19,5 @@ public class Matchday {
     private Long id;
 
     private String name;
-    private int status;
+    private MatchdayStatus status;
 }

@@ -14,6 +14,9 @@
 /home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/Prediction.java
 /home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/Team.java
 /home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/User.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/enums/MatchdayStatus.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/enums/Point.java
+/home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/model/enums/PredictionStatus.java
 /home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/repository/MatchRepository.java
 /home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/repository/MatchdayRepository.java
 /home/iglnierod/dev/porra-champions/porra-champions-back/porra-champions/src/main/java/com/iglnierod/porra_champions/repository/PredictionRepository.java
