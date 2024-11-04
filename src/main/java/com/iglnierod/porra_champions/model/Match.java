@@ -26,5 +26,8 @@ public class Match {
 
   private int localGoals;
   private int awayGoals;
-  private int matchDay;
+
+  @ManyToOne
+  @JoinColumn(name = "matchday_id")
+  private Matchday matchday;
 }

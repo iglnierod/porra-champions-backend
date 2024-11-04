@@ -49,11 +49,6 @@ public class PredictionController {
         return groupedPredictions;
     }
 
-    @GetMapping("/matchday/{matchDay}")
-    public List<Prediction> findPredictionsByMatchDay(@PathVariable("matchDay") int matchDay) {
-        return predictionRepository.findByMatch_MatchDay(matchDay);
-    }
-
     @PostMapping("/predict")
     public ResponseEntity<String> createPredictions(@RequestBody List<PredictionDTO> predictions) {
         for(PredictionDTO pred : predictions) {
