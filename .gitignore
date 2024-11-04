@@ -1,3 +1,5 @@
+docker-compose.yml
+
 HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
