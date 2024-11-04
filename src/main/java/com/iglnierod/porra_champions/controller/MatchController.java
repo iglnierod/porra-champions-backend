@@ -46,7 +46,7 @@ public class MatchController {
         return matchRepository.findByMatchday(matchday);
     }
 
-    @GetMapping("/v2/matchday/{matchdayId}") // Asegúrate de que el nombre coincida
+    @GetMapping("/v2/matchday/{matchdayId}")
     public List<MatchWithPredictionsDTO> getMatchesWithPredictionsByMatchDay(@PathVariable Long matchdayId) {
         // Obtiene el matchday por ID
         Matchday matchday = matchdayRepository.findById(matchdayId)
@@ -59,6 +59,29 @@ public class MatchController {
         // Itera sobre los partidos y obtiene las predicciones para cada uno
         for (Match match : matches) {
             List<Prediction> predictions = predictionRepository.findByMatch_Id(match.getId());
+            result.add(new MatchWithPredictionsDTO(match, predictions));
+        }
+
+        return result;
+    }
+
+    // Obtener los partidos de un matchday con las predicciones de un usuario específico
+    @GetMapping("/matchday/{matchdayId}/user/{userId}")
+    public List<MatchWithPredictionsDTO> getMatchesWithPredictionsByMatchDayAndUser(
+            @PathVariable Long matchdayId,
+            @PathVariable Long userId) {
+
+        Matchday matchday = matchdayRepository.findById(matchdayId)
+                .orElseThrow(() -> new RuntimeException("No matchday found with id: " + matchdayId));
+        // Obtener los partidos por matchDay
+        List<Match> matches = matchRepository.findByMatchday(matchday);
+
+        // Crear la lista de MatchWithPredictionsDTO
+        List<MatchWithPredictionsDTO> result = new ArrayList<>();
+
+        // Para cada partido, buscar las predicciones del usuario y agregarlas al DTO
+        for (Match match : matches) {
+            List<Prediction> predictions = predictionRepository.findByMatch_IdAndUser_Id(match.getId(), userId);
             result.add(new MatchWithPredictionsDTO(match, predictions));
         }
 
